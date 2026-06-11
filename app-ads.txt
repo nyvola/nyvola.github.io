@@ -1,0 +1,2 @@
+# Frigopolis / Nyvola - app-ads.txt (Authorized Digital Sellers for Apps)
+google.com, pub-7165723326429540, DIRECT, f08c47fec0942fa0
