@@ -3,223 +3,238 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nyvola — Studio d'applications</title>
-<meta name="description" content="Nyvola — petit studio indépendant. Des applications utiles, soignées et respectueuses de vos données.">
+<title>Nyvola — Studio</title>
+<meta name="description" content="Nyvola — studio indépendant. Des applications domestiques, utiles, auto-hébergeables et sans pistage.">
 <meta name="color-scheme" content="light">
 <link rel="icon" href="frigopolis.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Newsreader:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --cream:#F7F1E4; --card:#FBF8EF; --ink:#2E2A22; --ink-soft:#6b6354;
-    --grass:#5C7A41; --terra:#C2683F; --line:rgba(46,42,34,.12);
-    --shadow:0 1px 2px rgba(46,42,34,.04), 0 12px 30px -12px rgba(46,42,34,.18);
-    --shadow-hover:0 2px 4px rgba(46,42,34,.06), 0 22px 48px -16px rgba(46,42,34,.28);
+    --paper:#F4ECDA; --paper-2:#EFE5CF; --ink:#211E18; --ink-2:#6f6757;
+    --terra:#C2683F; --terra-deep:#a8542f; --grass:#5C7A41;
+    --line:rgba(33,30,24,.16); --line-soft:rgba(33,30,24,.08);
+    --maxw:1180px;
+    --serif:"Newsreader",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
   }
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
   body{
-    margin:0; color:var(--ink);
-    font-family:"Hanken Grotesk",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-    font-size:17px; line-height:1.6; letter-spacing:.005em;
-    background:
-      radial-gradient(1100px 600px at 88% -8%, rgba(194,104,63,.10), transparent 60%),
-      radial-gradient(900px 600px at 5% 0%, rgba(92,122,65,.12), transparent 55%),
-      var(--cream);
-    min-height:100vh;
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--sans); font-size:17px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:1080px; margin:0 auto; padding:0 24px}
-  a{color:inherit}
+  /* grain + vignette d'ambiance */
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:50; opacity:.05;
+    mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  body::after{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:-1;
+    background:radial-gradient(120% 80% at 88% -10%, rgba(194,104,63,.10), transparent 55%),
+               radial-gradient(90% 70% at -5% 0%, rgba(92,122,65,.10), transparent 50%);
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 clamp(20px,5vw,64px)}
+  a{color:inherit; text-decoration:none}
 
-  /* ---------- Hero ---------- */
-  header.hero{padding:88px 0 40px}
-  .brand{display:flex; align-items:center; gap:14px; margin-bottom:34px}
-  .brand .mark{
-    width:42px; height:42px; border-radius:13px; flex:0 0 auto;
-    background:linear-gradient(150deg,var(--grass),#41592f);
-    display:grid; place-items:center; color:#FBF8EF;
-    font-family:"Newsreader",serif; font-weight:600; font-size:24px;
-    box-shadow:0 6px 16px -6px rgba(65,89,47,.6);
+  /* ---------- Nameplate ---------- */
+  .plate{
+    display:flex; align-items:center; gap:18px; padding:22px 0 16px;
+    font-family:var(--sans); font-size:.74rem; font-weight:600;
+    letter-spacing:.22em; text-transform:uppercase; color:var(--ink-2);
   }
-  .brand .name{font-family:"Newsreader",serif; font-weight:600; font-size:23px; letter-spacing:.01em}
+  .plate .bar{flex:1; height:1px; background:var(--line)}
+  .plate .star{color:var(--terra); letter-spacing:0}
+
+  /* ---------- Hero / masthead ---------- */
+  .hero{position:relative; padding:clamp(40px,9vh,96px) 0 clamp(46px,8vh,84px); border-bottom:1px solid var(--ink)}
+  .kicker{font-family:var(--sans); font-size:.8rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--terra); margin:0 0 22px}
   .hero h1{
-    font-family:"Newsreader",serif; font-weight:600;
-    font-size:clamp(2.4rem,6vw,4rem); line-height:1.08; margin:0 0 18px;
-    max-width:16ch; letter-spacing:-.01em;
+    font-family:var(--serif); font-weight:500; letter-spacing:-.015em;
+    font-size:clamp(2.9rem,8.5vw,6.4rem); line-height:.98; margin:0; max-width:15ch;
   }
   .hero h1 em{font-style:italic; color:var(--terra)}
-  .hero p.lead{font-size:clamp(1.05rem,2.4vw,1.3rem); color:var(--ink-soft); max-width:54ch; margin:0}
+  .hero h1 .small{display:block; font-size:.52em; color:var(--ink-2); font-style:italic; margin-top:.18em; max-width:24ch}
+  .lead{font-size:clamp(1.05rem,2vw,1.28rem); color:var(--ink-2); max-width:50ch; margin:34px 0 0}
 
-  /* ---------- Apps ---------- */
-  main{padding:34px 0 10px}
-  .section-head{display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin:30px 0 22px}
-  .section-head h2{font-family:"Newsreader",serif; font-weight:600; font-size:1.5rem; margin:0}
-  .section-head .count{color:var(--ink-soft); font-size:.95rem}
+  /* tampon rotatif */
+  .stamp{position:absolute; top:clamp(8px,4vh,40px); right:0; width:clamp(108px,15vw,168px); height:clamp(108px,15vw,168px); animation:spin 26s linear infinite}
+  .stamp text{font-family:var(--sans); font-size:12.5px; font-weight:600; letter-spacing:.26em; fill:var(--ink); text-transform:uppercase}
+  .stamp .ring{fill:none; stroke:var(--terra); stroke-width:1.5}
+  .stamp .core{font-family:var(--serif); font-size:46px; fill:var(--terra); font-style:italic}
+  @keyframes spin{to{transform:rotate(360deg)}}
 
-  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:20px}
+  /* ---------- Sommaire / index ---------- */
+  .index-head{display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin:clamp(40px,7vh,72px) 0 6px}
+  .index-head h2{font-family:var(--sans); font-size:.8rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-2); margin:0}
+  .index-head .n{font-family:var(--serif); font-style:italic; color:var(--ink-2); font-size:1.05rem}
 
-  .card{
-    position:relative; display:flex; flex-direction:column; gap:14px;
-    background:var(--card); border:1px solid var(--line); border-radius:20px;
-    padding:24px 24px 20px; box-shadow:var(--shadow);
-    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-    overflow:hidden;
+  .entry{
+    display:grid; grid-template-columns:auto 1fr auto; gap:clamp(18px,4vw,52px); align-items:center;
+    padding:clamp(26px,4vw,40px) 0; border-top:1px solid var(--line);
+    position:relative; isolation:isolate; transition:padding-left .35s cubic-bezier(.2,.7,.2,1);
   }
-  .card::before{content:""; position:absolute; inset:0 0 auto 0; height:4px; background:var(--accent,var(--grass))}
-  .card:hover{transform:translateY(-4px); box-shadow:var(--shadow-hover); border-color:rgba(46,42,34,.2)}
+  .entry::before{ content:""; position:absolute; inset:0 -24px; z-index:-1; background:var(--paper-2); opacity:0; border-radius:14px; transition:opacity .35s ease}
+  .entry:hover::before{opacity:1}
+  .entry:hover{padding-left:18px}
+  .entry .num{font-family:var(--serif); font-size:clamp(1.3rem,3vw,1.8rem); color:var(--terra); font-feature-settings:"tnum"; line-height:1; padding-top:.15em; transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+  .entry:hover .num{transform:translateY(-3px)}
 
-  .card .top{display:flex; align-items:center; gap:15px}
-  .icon{
-    width:58px; height:58px; border-radius:16px; flex:0 0 auto;
-    display:grid; place-items:center; overflow:hidden;
-    background:color-mix(in srgb, var(--accent,var(--grass)) 14%, #fff);
-    border:1px solid color-mix(in srgb, var(--accent,var(--grass)) 22%, transparent);
+  .entry .body{min-width:0}
+  .entry .titleline{display:flex; align-items:center; gap:16px; flex-wrap:wrap}
+  .entry h3{font-family:var(--serif); font-weight:500; font-size:clamp(2rem,5.2vw,3.3rem); line-height:1; margin:0; letter-spacing:-.01em}
+  .entry:hover h3{font-style:italic}
+  .entry p{margin:14px 0 0; color:var(--ink-2); max-width:56ch; font-size:1.02rem}
+
+  .tag{display:inline-flex; align-items:center; gap:8px; font-family:var(--sans); font-size:.72rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-2); white-space:nowrap}
+  .tag .dot{width:8px; height:8px; border-radius:50%; background:var(--tagc,var(--grass)); box-shadow:0 0 0 4px color-mix(in srgb,var(--tagc,var(--grass)) 18%, transparent)}
+
+  .links{display:flex; flex-wrap:wrap; gap:18px; margin-top:16px}
+  .links a{font-family:var(--sans); font-weight:600; font-size:.82rem; letter-spacing:.12em; text-transform:uppercase; color:var(--terra-deep); display:inline-flex; align-items:center; gap:7px; padding-bottom:3px; border-bottom:1.5px solid color-mix(in srgb,var(--terra) 38%, transparent); transition:border-color .2s, gap .2s}
+  .links a:hover{border-color:var(--terra); gap:11px}
+
+  .thumb{width:clamp(64px,9vw,104px); height:clamp(64px,9vw,104px); border-radius:18px; overflow:hidden; flex:0 0 auto; transform:rotate(-3deg); transition:transform .4s cubic-bezier(.2,.7,.2,1); box-shadow:0 10px 26px -12px rgba(33,30,24,.5); border:1px solid var(--line-soft)}
+  .entry:hover .thumb{transform:rotate(2deg) scale(1.05)}
+  .thumb img{width:100%; height:100%; object-fit:cover; display:block}
+  .thumb.mono{display:grid; place-items:center; background:color-mix(in srgb,var(--tagc,var(--grass)) 16%,#fff)}
+  .thumb.mono span{font-family:var(--serif); font-style:italic; font-size:2.4rem; color:var(--tagc,var(--grass))}
+
+  .entry.soon{border-top-style:dashed}
+  .entry.soon .num,.entry.soon h3{color:var(--ink-2); opacity:.7}
+  .entry.soon h3{font-style:italic}
+
+  /* ---------- Colophon ---------- */
+  footer{margin-top:clamp(56px,9vh,96px); border-top:1px solid var(--ink); padding:30px 0 64px}
+  footer .wrap{display:flex; flex-wrap:wrap; gap:10px 28px; align-items:baseline; justify-content:space-between; font-family:var(--sans); font-size:.82rem; letter-spacing:.04em; color:var(--ink-2)}
+  footer .col-title{font-family:var(--serif); font-style:italic; font-size:1.15rem; color:var(--ink)}
+  footer a{color:var(--terra-deep); border-bottom:1.5px solid color-mix(in srgb,var(--terra) 38%,transparent); padding-bottom:2px; font-weight:600}
+  footer a:hover{border-color:var(--terra)}
+
+  /* ---------- Reveal au chargement ---------- */
+  .reveal{opacity:0; transform:translateY(18px); animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards; animation-delay:var(--d,0s)}
+  @keyframes rise{to{opacity:1; transform:none}}
+
+  :focus-visible{outline:2.5px solid var(--terra); outline-offset:3px; border-radius:4px}
+  @media (max-width:680px){
+    .entry{grid-template-columns:auto 1fr; gap:14px 20px}
+    .thumb{grid-row:1; grid-column:2; justify-self:start; margin-bottom:6px}
+    .entry .body{grid-column:1 / -1}
+    .entry:hover{padding-left:0}
+    .stamp{display:none}
   }
-  .icon img{width:100%; height:100%; object-fit:cover; display:block}
-  .icon .mono{font-family:"Newsreader",serif; font-weight:600; font-size:26px; color:var(--accent,var(--grass))}
-  .card h3{font-family:"Newsreader",serif; font-weight:600; font-size:1.4rem; margin:0; line-height:1.15}
-
-  .pill{
-    display:inline-flex; align-items:center; gap:7px; align-self:flex-start;
-    font-size:.8rem; font-weight:600; letter-spacing:.01em;
-    padding:5px 11px; border-radius:999px;
-    background:color-mix(in srgb, var(--pill,var(--ink-soft)) 13%, #fff);
-    color:color-mix(in srgb, var(--pill,var(--ink-soft)) 78%, #000);
-    border:1px solid color-mix(in srgb, var(--pill,var(--ink-soft)) 25%, transparent);
-  }
-  .pill .dot{width:7px; height:7px; border-radius:50%; background:var(--pill,var(--ink-soft))}
-
-  .card p.desc{margin:0; color:var(--ink-soft); font-size:1rem}
-  .links{display:flex; flex-wrap:wrap; gap:8px; margin-top:auto; padding-top:6px}
-  .links a{
-    display:inline-flex; align-items:center; gap:6px;
-    font-size:.92rem; font-weight:600; text-decoration:none;
-    padding:8px 14px; border-radius:11px; border:1px solid var(--line);
-    background:#fff; transition:background .2s ease, border-color .2s ease, transform .2s ease;
-  }
-  .links a:hover{background:var(--cream); border-color:rgba(46,42,34,.22); transform:translateY(-1px)}
-  .links a .arrow{transition:transform .2s ease}
-  .links a:hover .arrow{transform:translateX(2px)}
-
-  /* ghost "coming" card */
-  .card.ghost{
-    background:transparent; border:1.5px dashed rgba(46,42,34,.22); box-shadow:none;
-    align-items:center; justify-content:center; text-align:center; color:var(--ink-soft);
-    min-height:170px;
-  }
-  .card.ghost::before{display:none}
-  .card.ghost:hover{transform:none; box-shadow:none; border-color:rgba(46,42,34,.3)}
-  .card.ghost .spark{font-size:1.6rem; opacity:.6}
-  .card.ghost p{margin:6px 0 0; font-family:"Newsreader",serif; font-size:1.05rem}
-
-  /* ---------- Footer ---------- */
-  footer{margin-top:64px; padding:30px 0 56px; border-top:1px solid var(--line); color:var(--ink-soft); font-size:.92rem}
-  footer .wrap{display:flex; flex-wrap:wrap; gap:8px 22px; align-items:center; justify-content:space-between}
-  footer a{font-weight:600; text-decoration:none; border-bottom:1px solid rgba(46,42,34,.25); padding-bottom:1px}
-  footer a:hover{color:var(--ink)}
-
-  :focus-visible{outline:2.5px solid var(--terra); outline-offset:2px; border-radius:6px}
-  @media (prefers-reduced-motion:reduce){*{transition:none !important}}
-  @media (max-width:520px){ header.hero{padding:56px 0 28px} .brand{margin-bottom:26px} }
+  @media (prefers-reduced-motion:reduce){*{animation:none !important; transition:none !important}}
 </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="wrap">
-      <div class="brand">
-        <div class="mark" aria-hidden="true">N</div>
-        <span class="name">Nyvola</span>
-      </div>
-      <h1>Des applications <em>utiles</em>, soignées, qui respectent vos données.</h1>
-      <p class="lead">Studio indépendant. On conçoit des outils auto-hébergeables, sans pistage, faits pour durer — et on en ajoute au fil du temps.</p>
-    </div>
-  </header>
+  <div class="wrap">
 
-  <main>
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Applications</h2>
-        <span class="count" id="count"></span>
-      </div>
-      <div class="grid" id="grid"></div>
+    <div class="plate reveal" style="--d:.05s">
+      <span class="star">✶</span><span>Nyvola Studio</span>
+      <span class="bar"></span>
+      <span>Éd. <span id="year"></span> · Indépendant</span>
     </div>
-  </main>
+
+    <header class="hero">
+      <svg class="stamp reveal" style="--d:.5s" viewBox="0 0 200 200" aria-hidden="true">
+        <defs><path id="ring" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs>
+        <circle class="ring" cx="100" cy="100" r="92"/>
+        <circle class="ring" cx="100" cy="100" r="56"/>
+        <text><textPath href="#ring" startOffset="0">· Auto-hébergé · Sans pistage · Fait main </textPath></text>
+        <text class="core" x="100" y="116" text-anchor="middle">N</text>
+      </svg>
+
+      <p class="kicker reveal" style="--d:.12s">Logiciels domestiques</p>
+      <h1 class="reveal" style="--d:.2s">Des outils <em>faits&nbsp;main</em>,<span class="small">pour la maison et ceux qui y vivent.</span></h1>
+      <p class="lead reveal" style="--d:.34s">Un petit studio indépendant. On conçoit des applications utiles, auto-hébergeables et sans pistage — soignées jusqu'au détail, ajoutées une par une.</p>
+    </header>
+
+    <main>
+      <div class="index-head reveal" style="--d:.4s">
+        <h2>Le catalogue</h2>
+        <span class="n" id="count"></span>
+      </div>
+      <div id="list"></div>
+    </main>
+
+  </div>
 
   <footer>
     <div class="wrap">
-      <span>© <span id="year"></span> Nyvola</span>
+      <span class="col-title">Nyvola</span>
+      <span>Conçu &amp; auto-hébergé avec soin</span>
       <span>Une question ? <a href="mailto:nyvolastudio@gmail.com">nyvolastudio@gmail.com</a></span>
+      <span>© <span class="y"></span></span>
     </div>
   </footer>
 
 <script>
   /* =====================================================================
-     Liste des applications.
-     👉 Pour en ajouter une : copie un bloc { ... } ci-dessous.
-        - accent : couleur de la marque (bandeau + icône).
-        - icon   : nom d'un fichier image à la racine (ex. "monappli.svg"),
-                   ou null pour afficher un monogramme (1re lettre du nom).
-        - status.kind : "live" | "beta" | "alpha" | "soon"  (couleur du badge).
-        - links  : autant de boutons que voulu { label, href }.
+     Catalogue des applications — source unique.
+     👉 Ajouter une appli : copie un bloc { ... }.
+        accent  : couleur de marque (pastille de statut + monogramme).
+        icon    : fichier image à la racine (ex. "appli.svg"), ou null → monogramme.
+        status  : texte libre du statut.
+        links   : autant de liens que voulu { label, href }.
      ===================================================================== */
   const apps = [
     {
       name: "Frigopolis",
-      desc: "Inventaire familial auto-hébergé : scanne tes produits, suis les dates de péremption et ne gaspille plus rien. Android + tableau de bord web.",
+      desc: "Inventaire familial auto-hébergé : scanne tes produits, suis les dates de péremption et ne gaspille plus rien. Application Android + tableau de bord web.",
       accent: "#5C7A41",
       icon: "frigopolis.svg",
-      status: { label: "Alpha · bientôt sur le Play Store", kind: "alpha" },
-      links: [
-        { label: "Confidentialité", href: "/frigopolis-legal/" }
-      ]
+      status: "Alpha · bientôt sur le Play Store",
+      links: [ { label: "Confidentialité", href: "/frigopolis-legal/" } ]
     }
-    // , { name:"...", desc:"...", accent:"#3F6FA0", icon:null,
-    //     status:{label:"Bientôt", kind:"soon"}, links:[{label:"En savoir plus", href:"#"}] }
+    // , { name:"…", desc:"…", accent:"#3F6FA0", icon:null,
+    //     status:"Bientôt", links:[{label:"En savoir plus", href:"#"}] }
   ];
 
-  const STATUS = { live:"#5C7A41", beta:"#3F6FA0", alpha:"#C2683F", soon:"#6b6354" };
+  const list = document.getElementById("list");
+  const baseDelay = 0.5;
 
-  function el(tag, cls, html){ const e=document.createElement(tag); if(cls)e.className=cls; if(html!=null)e.innerHTML=html; return e; }
+  apps.forEach((app, i) => {
+    const e = document.createElement(app.links && app.links.length ? "div" : "div");
+    e.className = "entry reveal";
+    e.style.setProperty("--d", (baseDelay + i*0.1) + "s");
+    e.style.setProperty("--tagc", app.accent || "#5C7A41");
 
-  const grid = document.getElementById("grid");
-  apps.forEach(app => {
-    const card = el("article","card");
-    card.style.setProperty("--accent", app.accent || "#5C7A41");
+    const num = String(i+1).padStart(2,"0");
+    const thumb = app.icon
+      ? `<div class="thumb"><img src="${app.icon}" alt="${app.name} — logo" loading="lazy"></div>`
+      : `<div class="thumb mono"><span>${(app.name||"?").trim().charAt(0)}</span></div>`;
+    const tag = app.status ? `<span class="tag"><span class="dot"></span>${app.status}</span>` : "";
+    const links = (app.links||[]).map(l => {
+      const ext = /^https?:/.test(l.href) ? ' target="_blank" rel="noopener"' : '';
+      return `<a href="${l.href}"${ext}>${l.label} <span aria-hidden="true">↗</span></a>`;
+    }).join("");
 
-    const top = el("div","top");
-    const icon = el("div","icon");
-    if (app.icon) { const img=el("img"); img.src=app.icon; img.alt=app.name+" — logo"; img.loading="lazy"; icon.appendChild(img); }
-    else { icon.appendChild(el("span","mono", (app.name||"?").trim().charAt(0))); }
-    top.appendChild(icon);
-    top.appendChild(el("h3", null, app.name));
-    card.appendChild(top);
-
-    if (app.status){
-      const pill = el("span","pill", '<span class="dot"></span>'+app.status.label);
-      pill.style.setProperty("--pill", STATUS[app.status.kind] || "#6b6354");
-      card.appendChild(pill);
-    }
-    card.appendChild(el("p","desc", app.desc || ""));
-
-    if (app.links && app.links.length){
-      const links = el("div","links");
-      app.links.forEach(l => {
-        const a = el("a", null, l.label+' <span class="arrow" aria-hidden="true">→</span>');
-        a.href = l.href; if(/^https?:/.test(l.href)){ a.target="_blank"; a.rel="noopener"; }
-        links.appendChild(a);
-      });
-      card.appendChild(links);
-    }
-    grid.appendChild(card);
+    e.innerHTML = `
+      <span class="num">${num}</span>
+      <div class="body">
+        <div class="titleline"><h3>${app.name}</h3>${tag}</div>
+        <p>${app.desc||""}</p>
+        ${links ? `<div class="links">${links}</div>` : ""}
+      </div>
+      ${thumb}`;
+    list.appendChild(e);
   });
 
-  // Carte fantôme "à venir"
-  const ghost = el("article","card ghost",'<div class="spark" aria-hidden="true">✦</div><p>D’autres applications arrivent</p>');
-  grid.appendChild(ghost);
+  // Entrée "à venir"
+  const soon = document.createElement("div");
+  soon.className = "entry soon reveal";
+  soon.style.setProperty("--d", (baseDelay + apps.length*0.1) + "s");
+  soon.innerHTML = `
+    <span class="num">${String(apps.length+1).padStart(2,"0")}</span>
+    <div class="body"><div class="titleline"><h3>À venir</h3></div>
+      <p>D'autres applications sont en préparation.</p></div>`;
+  list.appendChild(soon);
 
-  document.getElementById("count").textContent = apps.length + (apps.length>1?" applications":" application");
-  document.getElementById("year").textContent = new Date().getFullYear();
+  document.getElementById("count").textContent = "№ 01 — " + String(apps.length).padStart(2,"0");
+  const y = new Date().getFullYear();
+  document.getElementById("year").textContent = y;
+  document.querySelectorAll(".y").forEach(n => n.textContent = y);
 </script>
 </body>
 </html>
