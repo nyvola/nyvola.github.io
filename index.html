@@ -1,1 +1,225 @@
-<!doctype html><meta charset=utf-8><title>Nyvola</title><h1>Nyvola</h1><p>Frigopolis &mdash; <a href="/frigopolis-legal/">privacy</a>.</p>
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nyvola — Studio d'applications</title>
+<meta name="description" content="Nyvola — petit studio indépendant. Des applications utiles, soignées et respectueuses de vos données.">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="frigopolis.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Newsreader:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F7F1E4; --card:#FBF8EF; --ink:#2E2A22; --ink-soft:#6b6354;
+    --grass:#5C7A41; --terra:#C2683F; --line:rgba(46,42,34,.12);
+    --shadow:0 1px 2px rgba(46,42,34,.04), 0 12px 30px -12px rgba(46,42,34,.18);
+    --shadow-hover:0 2px 4px rgba(46,42,34,.06), 0 22px 48px -16px rgba(46,42,34,.28);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; color:var(--ink);
+    font-family:"Hanken Grotesk",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    font-size:17px; line-height:1.6; letter-spacing:.005em;
+    background:
+      radial-gradient(1100px 600px at 88% -8%, rgba(194,104,63,.10), transparent 60%),
+      radial-gradient(900px 600px at 5% 0%, rgba(92,122,65,.12), transparent 55%),
+      var(--cream);
+    min-height:100vh;
+  }
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px}
+  a{color:inherit}
+
+  /* ---------- Hero ---------- */
+  header.hero{padding:88px 0 40px}
+  .brand{display:flex; align-items:center; gap:14px; margin-bottom:34px}
+  .brand .mark{
+    width:42px; height:42px; border-radius:13px; flex:0 0 auto;
+    background:linear-gradient(150deg,var(--grass),#41592f);
+    display:grid; place-items:center; color:#FBF8EF;
+    font-family:"Newsreader",serif; font-weight:600; font-size:24px;
+    box-shadow:0 6px 16px -6px rgba(65,89,47,.6);
+  }
+  .brand .name{font-family:"Newsreader",serif; font-weight:600; font-size:23px; letter-spacing:.01em}
+  .hero h1{
+    font-family:"Newsreader",serif; font-weight:600;
+    font-size:clamp(2.4rem,6vw,4rem); line-height:1.08; margin:0 0 18px;
+    max-width:16ch; letter-spacing:-.01em;
+  }
+  .hero h1 em{font-style:italic; color:var(--terra)}
+  .hero p.lead{font-size:clamp(1.05rem,2.4vw,1.3rem); color:var(--ink-soft); max-width:54ch; margin:0}
+
+  /* ---------- Apps ---------- */
+  main{padding:34px 0 10px}
+  .section-head{display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin:30px 0 22px}
+  .section-head h2{font-family:"Newsreader",serif; font-weight:600; font-size:1.5rem; margin:0}
+  .section-head .count{color:var(--ink-soft); font-size:.95rem}
+
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:20px}
+
+  .card{
+    position:relative; display:flex; flex-direction:column; gap:14px;
+    background:var(--card); border:1px solid var(--line); border-radius:20px;
+    padding:24px 24px 20px; box-shadow:var(--shadow);
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    overflow:hidden;
+  }
+  .card::before{content:""; position:absolute; inset:0 0 auto 0; height:4px; background:var(--accent,var(--grass))}
+  .card:hover{transform:translateY(-4px); box-shadow:var(--shadow-hover); border-color:rgba(46,42,34,.2)}
+
+  .card .top{display:flex; align-items:center; gap:15px}
+  .icon{
+    width:58px; height:58px; border-radius:16px; flex:0 0 auto;
+    display:grid; place-items:center; overflow:hidden;
+    background:color-mix(in srgb, var(--accent,var(--grass)) 14%, #fff);
+    border:1px solid color-mix(in srgb, var(--accent,var(--grass)) 22%, transparent);
+  }
+  .icon img{width:100%; height:100%; object-fit:cover; display:block}
+  .icon .mono{font-family:"Newsreader",serif; font-weight:600; font-size:26px; color:var(--accent,var(--grass))}
+  .card h3{font-family:"Newsreader",serif; font-weight:600; font-size:1.4rem; margin:0; line-height:1.15}
+
+  .pill{
+    display:inline-flex; align-items:center; gap:7px; align-self:flex-start;
+    font-size:.8rem; font-weight:600; letter-spacing:.01em;
+    padding:5px 11px; border-radius:999px;
+    background:color-mix(in srgb, var(--pill,var(--ink-soft)) 13%, #fff);
+    color:color-mix(in srgb, var(--pill,var(--ink-soft)) 78%, #000);
+    border:1px solid color-mix(in srgb, var(--pill,var(--ink-soft)) 25%, transparent);
+  }
+  .pill .dot{width:7px; height:7px; border-radius:50%; background:var(--pill,var(--ink-soft))}
+
+  .card p.desc{margin:0; color:var(--ink-soft); font-size:1rem}
+  .links{display:flex; flex-wrap:wrap; gap:8px; margin-top:auto; padding-top:6px}
+  .links a{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:.92rem; font-weight:600; text-decoration:none;
+    padding:8px 14px; border-radius:11px; border:1px solid var(--line);
+    background:#fff; transition:background .2s ease, border-color .2s ease, transform .2s ease;
+  }
+  .links a:hover{background:var(--cream); border-color:rgba(46,42,34,.22); transform:translateY(-1px)}
+  .links a .arrow{transition:transform .2s ease}
+  .links a:hover .arrow{transform:translateX(2px)}
+
+  /* ghost "coming" card */
+  .card.ghost{
+    background:transparent; border:1.5px dashed rgba(46,42,34,.22); box-shadow:none;
+    align-items:center; justify-content:center; text-align:center; color:var(--ink-soft);
+    min-height:170px;
+  }
+  .card.ghost::before{display:none}
+  .card.ghost:hover{transform:none; box-shadow:none; border-color:rgba(46,42,34,.3)}
+  .card.ghost .spark{font-size:1.6rem; opacity:.6}
+  .card.ghost p{margin:6px 0 0; font-family:"Newsreader",serif; font-size:1.05rem}
+
+  /* ---------- Footer ---------- */
+  footer{margin-top:64px; padding:30px 0 56px; border-top:1px solid var(--line); color:var(--ink-soft); font-size:.92rem}
+  footer .wrap{display:flex; flex-wrap:wrap; gap:8px 22px; align-items:center; justify-content:space-between}
+  footer a{font-weight:600; text-decoration:none; border-bottom:1px solid rgba(46,42,34,.25); padding-bottom:1px}
+  footer a:hover{color:var(--ink)}
+
+  :focus-visible{outline:2.5px solid var(--terra); outline-offset:2px; border-radius:6px}
+  @media (prefers-reduced-motion:reduce){*{transition:none !important}}
+  @media (max-width:520px){ header.hero{padding:56px 0 28px} .brand{margin-bottom:26px} }
+</style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="brand">
+        <div class="mark" aria-hidden="true">N</div>
+        <span class="name">Nyvola</span>
+      </div>
+      <h1>Des applications <em>utiles</em>, soignées, qui respectent vos données.</h1>
+      <p class="lead">Studio indépendant. On conçoit des outils auto-hébergeables, sans pistage, faits pour durer — et on en ajoute au fil du temps.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Applications</h2>
+        <span class="count" id="count"></span>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© <span id="year"></span> Nyvola</span>
+      <span>Une question ? <a href="mailto:nyvolastudio@gmail.com">nyvolastudio@gmail.com</a></span>
+    </div>
+  </footer>
+
+<script>
+  /* =====================================================================
+     Liste des applications.
+     👉 Pour en ajouter une : copie un bloc { ... } ci-dessous.
+        - accent : couleur de la marque (bandeau + icône).
+        - icon   : nom d'un fichier image à la racine (ex. "monappli.svg"),
+                   ou null pour afficher un monogramme (1re lettre du nom).
+        - status.kind : "live" | "beta" | "alpha" | "soon"  (couleur du badge).
+        - links  : autant de boutons que voulu { label, href }.
+     ===================================================================== */
+  const apps = [
+    {
+      name: "Frigopolis",
+      desc: "Inventaire familial auto-hébergé : scanne tes produits, suis les dates de péremption et ne gaspille plus rien. Android + tableau de bord web.",
+      accent: "#5C7A41",
+      icon: "frigopolis.svg",
+      status: { label: "Alpha · bientôt sur le Play Store", kind: "alpha" },
+      links: [
+        { label: "Confidentialité", href: "/frigopolis-legal/" }
+      ]
+    }
+    // , { name:"...", desc:"...", accent:"#3F6FA0", icon:null,
+    //     status:{label:"Bientôt", kind:"soon"}, links:[{label:"En savoir plus", href:"#"}] }
+  ];
+
+  const STATUS = { live:"#5C7A41", beta:"#3F6FA0", alpha:"#C2683F", soon:"#6b6354" };
+
+  function el(tag, cls, html){ const e=document.createElement(tag); if(cls)e.className=cls; if(html!=null)e.innerHTML=html; return e; }
+
+  const grid = document.getElementById("grid");
+  apps.forEach(app => {
+    const card = el("article","card");
+    card.style.setProperty("--accent", app.accent || "#5C7A41");
+
+    const top = el("div","top");
+    const icon = el("div","icon");
+    if (app.icon) { const img=el("img"); img.src=app.icon; img.alt=app.name+" — logo"; img.loading="lazy"; icon.appendChild(img); }
+    else { icon.appendChild(el("span","mono", (app.name||"?").trim().charAt(0))); }
+    top.appendChild(icon);
+    top.appendChild(el("h3", null, app.name));
+    card.appendChild(top);
+
+    if (app.status){
+      const pill = el("span","pill", '<span class="dot"></span>'+app.status.label);
+      pill.style.setProperty("--pill", STATUS[app.status.kind] || "#6b6354");
+      card.appendChild(pill);
+    }
+    card.appendChild(el("p","desc", app.desc || ""));
+
+    if (app.links && app.links.length){
+      const links = el("div","links");
+      app.links.forEach(l => {
+        const a = el("a", null, l.label+' <span class="arrow" aria-hidden="true">→</span>');
+        a.href = l.href; if(/^https?:/.test(l.href)){ a.target="_blank"; a.rel="noopener"; }
+        links.appendChild(a);
+      });
+      card.appendChild(links);
+    }
+    grid.appendChild(card);
+  });
+
+  // Carte fantôme "à venir"
+  const ghost = el("article","card ghost",'<div class="spark" aria-hidden="true">✦</div><p>D’autres applications arrivent</p>');
+  grid.appendChild(ghost);
+
+  document.getElementById("count").textContent = apps.length + (apps.length>1?" applications":" application");
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
