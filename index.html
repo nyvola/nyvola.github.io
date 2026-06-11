@@ -9,155 +9,112 @@
 <link rel="icon" href="frigopolis.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#16130D; --bg-2:#1E1A12; --cream:#ECE3CF; --muted:#938A75;
-    --terra:#D5814F; --terra-soft:#b86c40; --grass:#8AA468;
-    --line:rgba(236,227,207,.11); --line-2:rgba(236,227,207,.06);
-    --maxw:980px; --serif:"Newsreader",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
+    --bg:#16130D; --bg-2:#1F1B13; --cream:#ECE3CF; --muted:#968D78;
+    --terra:#D5814F; --grass:#8AA468; --line:rgba(236,227,207,.12);
+    --serif:"Newsreader",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
   }
-  *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
+  *{box-sizing:border-box; margin:0; padding:0}
+  html,body{height:100%}
   body{
-    margin:0; background:var(--bg); color:var(--cream);
-    font-family:var(--sans); font-size:17px; line-height:1.65; font-weight:400;
+    background:var(--bg); color:var(--cream); font-family:var(--sans); font-size:16px; line-height:1.55;
     -webkit-font-smoothing:antialiased;
+    display:flex; flex-direction:column; min-height:100dvh; overflow:hidden;
+    padding:clamp(20px,3.4vh,34px) clamp(22px,5vw,56px);
+    background-image:radial-gradient(70% 60% at 85% 0%, rgba(213,129,79,.10), transparent 60%);
   }
-  body::after{ content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
-    background:radial-gradient(80% 50% at 78% -8%, rgba(213,129,79,.10), transparent 60%); }
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 clamp(22px,5vw,40px)}
   a{color:inherit; text-decoration:none}
 
-  /* top line */
-  .top{display:flex; align-items:center; justify-content:space-between; padding:26px 0; font-family:var(--sans); font-size:.74rem; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:var(--muted)}
-  .top .nm{color:var(--cream)}
-  .top .nm b{color:var(--terra); font-weight:500}
+  .top{display:flex; align-items:center; justify-content:space-between; font-size:.72rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); flex:0 0 auto}
+  .top .nm{color:var(--cream)} .top .nm b{color:var(--terra); font-weight:500}
 
-  /* hero */
-  .hero{padding:clamp(56px,15vh,150px) 0 clamp(48px,11vh,110px); max-width:21ch}
-  .hero .kick{font-size:.76rem; font-weight:600; letter-spacing:.24em; text-transform:uppercase; color:var(--terra); margin:0 0 26px}
-  .hero h1{font-family:var(--serif); font-weight:300; font-size:clamp(2.7rem,8vw,5.4rem); line-height:1.02; letter-spacing:-.015em; margin:0}
-  .hero h1 em{font-style:italic; color:var(--terra)}
-  .hero p{font-family:var(--sans); color:var(--muted); font-size:clamp(1.02rem,1.7vw,1.2rem); max-width:46ch; margin:30px 0 0}
+  main{flex:1 1 auto; display:flex; flex-direction:column; justify-content:center; gap:clamp(20px,3.4vh,34px); max-width:760px; width:100%; margin:0 auto; min-height:0}
+  .intro .kick{font-size:.72rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--terra); margin-bottom:14px}
+  .intro h1{font-family:var(--serif); font-weight:400; font-size:clamp(1.7rem,4.2vw,2.6rem); line-height:1.12; letter-spacing:-.01em; max-width:18ch}
+  .intro h1 em{font-style:italic; color:var(--terra)}
+  .intro p{color:var(--muted); margin-top:14px; max-width:50ch; font-size:clamp(.95rem,1.6vw,1.05rem)}
 
-  /* list */
-  .label{font-size:.74rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); padding-bottom:16px; border-bottom:1px solid var(--line)}
-  .row{
-    display:grid; grid-template-columns:2.4rem 1fr auto; gap:clamp(16px,4vw,40px); align-items:start;
-    padding:clamp(28px,5vw,46px) 0; border-bottom:1px solid var(--line-2); position:relative;
-  }
-  .row .no{font-family:var(--serif); font-style:italic; color:var(--muted); font-size:1.05rem; line-height:1.7; transition:color .3s}
-  .row:hover .no{color:var(--terra)}
-  .row .main{min-width:0}
-  .row h2{font-family:var(--serif); font-weight:400; font-size:clamp(1.7rem,4.4vw,2.7rem); line-height:1.08; margin:0; letter-spacing:-.01em; transition:color .3s}
-  .row p{color:var(--muted); margin:12px 0 0; max-width:52ch; font-size:1.01rem}
-  .row .status{display:inline-flex; align-items:center; gap:9px; margin-top:16px; font-size:.74rem; font-weight:600; letter-spacing:.13em; text-transform:uppercase; color:var(--muted)}
-  .row .status .dot{width:7px; height:7px; border-radius:50%; background:var(--ac,var(--grass))}
-  .row .links{display:flex; flex-wrap:wrap; gap:20px; margin-top:18px}
-  .row .links a{font-size:.8rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--terra); display:inline-flex; gap:8px; align-items:center; transition:gap .25s, color .2s}
-  .row .links a:hover{gap:13px; color:var(--cream)}
-  .row .art{width:clamp(54px,8vw,82px); aspect-ratio:1; border-radius:15px; overflow:hidden; border:1px solid var(--line); opacity:.92; transition:transform .4s cubic-bezier(.2,.7,.2,1), opacity .3s}
-  .row:hover .art{opacity:1; transform:translateY(-3px)}
-  .row .art img{width:100%; height:100%; object-fit:cover; display:block}
-  .row .art.mono{display:grid; place-items:center; background:var(--bg-2)}
-  .row .art.mono span{font-family:var(--serif); font-style:italic; color:var(--ac,var(--grass)); font-size:1.8rem}
-  .row.soon h2{color:var(--muted); font-style:italic}
-  .row.soon{border-bottom:none}
+  .apps{display:flex; flex-direction:column; gap:12px}
+  .card{display:flex; align-items:center; gap:18px; padding:18px 20px; border:1px solid var(--line); border-radius:16px; background:var(--bg-2); transition:border-color .25s, transform .25s}
+  .card:hover{border-color:rgba(236,227,207,.26); transform:translateY(-2px)}
+  .card .logo{width:54px; height:54px; border-radius:13px; overflow:hidden; flex:0 0 auto; border:1px solid var(--line)}
+  .card .logo img{width:100%; height:100%; object-fit:cover; display:block}
+  .card .logo.mono{display:grid; place-items:center; background:var(--bg)}
+  .card .logo.mono span{font-family:var(--serif); font-style:italic; color:var(--ac,var(--grass)); font-size:1.5rem}
+  .card .info{min-width:0; flex:1}
+  .card .info .h{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
+  .card .info h2{font-family:var(--serif); font-weight:500; font-size:1.3rem; line-height:1.1}
+  .card .info .status{font-size:.7rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); display:inline-flex; align-items:center; gap:7px}
+  .card .info .status .dot{width:6px; height:6px; border-radius:50%; background:var(--ac,var(--grass))}
+  .card .info p{color:var(--muted); font-size:.92rem; margin-top:4px; line-height:1.45}
+  .card .go{flex:0 0 auto; align-self:center}
+  .card .go a{font-size:.74rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--terra); display:inline-flex; align-items:center; gap:6px; white-space:nowrap; transition:gap .2s}
+  .card .go a:hover{gap:10px}
 
-  footer{margin-top:clamp(70px,12vh,130px); padding:28px 0 64px; border-top:1px solid var(--line); display:flex; flex-wrap:wrap; gap:8px 26px; justify-content:space-between; font-size:.82rem; color:var(--muted)}
-  footer a{color:var(--terra)} footer a:hover{color:var(--cream)}
+  footer{flex:0 0 auto; display:flex; flex-wrap:wrap; gap:6px 20px; justify-content:space-between; font-size:.78rem; color:var(--muted)}
+  footer a{color:var(--terra)}
 
-  .rv{opacity:0; transform:translateY(16px); animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards; animation-delay:var(--d,0s)}
-  @keyframes rise{to{opacity:1; transform:none}}
   :focus-visible{outline:2px solid var(--terra); outline-offset:3px; border-radius:3px}
-  @media (max-width:600px){
-    .row{grid-template-columns:1fr; gap:0}
-    .row .no{font-size:.85rem; letter-spacing:.2em; text-transform:uppercase; margin-bottom:6px}
-    .row .art{display:none}
+  @media (max-width:560px){
+    body{overflow:auto}
+    .card{flex-wrap:wrap}
+    .card .go{width:100%; padding-left:72px}
   }
-  @media (prefers-reduced-motion:reduce){*{animation:none !important; transition:none !important}}
+  @media (prefers-reduced-motion:reduce){*{transition:none !important}}
 </style>
 </head>
 <body>
-  <div class="wrap">
-
-    <div class="top rv" style="--d:.05s">
-      <span class="nm"><b>✶</b> Nyvola</span>
-      <span>Studio indépendant</span>
-    </div>
-
-    <header class="hero">
-      <p class="kick rv" style="--d:.1s">Logiciels domestiques</p>
-      <h1 class="rv" style="--d:.18s">Des outils <em>faits main</em> pour la maison.</h1>
-      <p class="rv" style="--d:.32s">Des applications utiles, auto-hébergeables et sans pistage. Soignées jusqu'au détail, ajoutées une par une.</p>
-    </header>
-
-    <main>
-      <div class="label rv" style="--d:.4s">Le catalogue</div>
-      <div id="list"></div>
-    </main>
-
-    <footer class="rv" style="--d:.5s">
-      <span>Nyvola, conçu et auto-hébergé avec soin.</span>
-      <span><a href="mailto:nyvolastudio@gmail.com">nyvolastudio@gmail.com</a> · © <span class="y"></span></span>
-    </footer>
-
+  <div class="top">
+    <span class="nm"><b>✶</b> Nyvola</span>
+    <span>Studio indépendant</span>
   </div>
 
+  <main>
+    <div class="intro">
+      <p class="kick">Logiciels domestiques</p>
+      <h1>Des outils <em>faits main</em> pour la maison.</h1>
+      <p>Des applications utiles, auto-hébergeables et sans pistage, soignées jusqu'au détail.</p>
+    </div>
+    <div class="apps" id="list"></div>
+  </main>
+
+  <footer>
+    <span>Nyvola, conçu et auto-hébergé avec soin.</span>
+    <span><a href="mailto:nyvolastudio@gmail.com">nyvolastudio@gmail.com</a> · © <span class="y"></span></span>
+  </footer>
+
 <script>
-  /* =====================================================================
-     Catalogue des applications (source unique).
-     Ajouter une appli : copie un bloc { ... }.
-       ac     : couleur d'accent (pastille de statut + monogramme).
-       icon   : fichier image à la racine, ou null pour un monogramme.
-       status : texte du statut (sans tiret cadratin svp).
-       links  : autant de liens que voulu { label, href }.
-     ===================================================================== */
+  /* Catalogue. Ajouter une appli = un objet { ... }.
+     ac: couleur d'accent · icon: fichier image ou null (monogramme)
+     status: texte court · links: { label, href } (le 1er sert de bouton) */
   const apps = [
     {
       name: "Frigopolis",
-      desc: "Inventaire familial auto-hébergé : scanne tes produits, suis les dates de péremption et ne gaspille plus rien. Application Android et tableau de bord web.",
+      desc: "Inventaire familial auto-hébergé : scanne, suis les dates de péremption, ne gaspille plus.",
       ac: "#8AA468",
       icon: "frigopolis.svg",
-      status: "Alpha · bientôt sur le Play Store",
+      status: "Alpha",
       links: [ { label: "Confidentialité", href: "/frigopolis-legal/" } ]
     }
-    // , { name:"…", desc:"…", ac:"#5E86A6", icon:null, status:"Bientôt", links:[{label:"En savoir plus", href:"#"}] }
   ];
 
   const list = document.getElementById("list");
-  apps.forEach((app, i) => {
-    const row = document.createElement("article");
-    row.className = "row rv";
-    row.style.setProperty("--d", (0.46 + i*0.09) + "s");
-    row.style.setProperty("--ac", app.ac || "#8AA468");
-    const no = String(i+1).padStart(2,"0");
-    const art = app.icon
-      ? `<div class="art"><img src="${app.icon}" alt="Logo ${app.name}" loading="lazy"></div>`
-      : `<div class="art mono"><span>${(app.name||"?").trim().charAt(0)}</span></div>`;
-    const links = (app.links||[]).map(l => {
-      const ext = /^https?:/.test(l.href) ? ' target="_blank" rel="noopener"' : '';
-      return `<a href="${l.href}"${ext}>${l.label} <span aria-hidden="true">↗</span></a>`;
-    }).join("");
-    row.innerHTML = `
-      <span class="no">${no}</span>
-      <div class="main">
-        <h2>${app.name}</h2>
+  apps.forEach(app => {
+    const c = document.createElement("article"); c.className = "card";
+    c.style.setProperty("--ac", app.ac || "#8AA468");
+    const logo = app.icon
+      ? `<div class="logo"><img src="${app.icon}" alt="Logo ${app.name}" loading="lazy"></div>`
+      : `<div class="logo mono"><span>${(app.name||"?").trim().charAt(0)}</span></div>`;
+    const link = (app.links && app.links[0]) ? `<div class="go"><a href="${app.links[0].href}">${app.links[0].label} <span aria-hidden="true">↗</span></a></div>` : "";
+    c.innerHTML = `${logo}
+      <div class="info">
+        <div class="h"><h2>${app.name}</h2>${app.status ? `<span class="status"><span class="dot"></span>${app.status}</span>` : ""}</div>
         <p>${app.desc||""}</p>
-        ${app.status ? `<span class="status"><span class="dot"></span>${app.status}</span>` : ""}
-        ${links ? `<div class="links">${links}</div>` : ""}
-      </div>
-      ${art}`;
-    list.appendChild(row);
+      </div>${link}`;
+    list.appendChild(c);
   });
-
-  const soon = document.createElement("article");
-  soon.className = "row soon rv";
-  soon.style.setProperty("--d", (0.46 + apps.length*0.09) + "s");
-  soon.innerHTML = `<span class="no">${String(apps.length+1).padStart(2,"0")}</span>
-    <div class="main"><h2>Bientôt</h2><p>D'autres applications sont en préparation.</p></div>`;
-  list.appendChild(soon);
 
   const y = new Date().getFullYear();
   document.querySelectorAll(".y").forEach(n => n.textContent = y);
