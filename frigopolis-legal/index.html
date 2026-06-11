@@ -1,19 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Frigopolis — Privacy Policy</title>
+<title>Frigopolis · Privacy Policy</title>
+<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
-  body{max-width:760px;margin:40px auto;padding:0 16px;font-family:system-ui,sans-serif;line-height:1.6;color:#2E2A22}
-  h1{font-size:1.7rem} h2{margin-top:2rem;border-bottom:1px solid #eee;padding-bottom:4px}
-  code{background:#f4f1ea;padding:1px 5px;border-radius:4px}
-  a{color:#5C7A41}
+  :root{
+    --bg:#16130D; --cream:#ECE3CF; --muted:#938A75; --terra:#D5814F;
+    --line:rgba(236,227,207,.12); --raise:#1E1A12;
+    --serif:"Newsreader",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--bg); color:var(--cream); font-family:var(--sans);
+    line-height:1.7; font-size:17px; -webkit-font-smoothing:antialiased}
+  .wrap{max-width:720px; margin:0 auto; padding:0 22px 90px}
+  a{color:var(--terra)} a:hover{color:var(--cream)}
+  .top{display:flex; align-items:center; gap:10px; padding:28px 0; font-size:.74rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--muted)}
+  .top a{color:var(--cream); text-decoration:none} .top a:hover{color:var(--terra)}
+  .top .star{color:var(--terra)}
+  h1{font-family:var(--serif); font-weight:400; font-size:clamp(2rem,5vw,2.9rem); line-height:1.1; letter-spacing:-.01em; margin:24px 0 6px}
+  h2{font-family:var(--serif); font-weight:400; font-size:1.35rem; margin:2.4rem 0 .4rem; padding-bottom:8px; border-bottom:1px solid var(--line)}
+  p,li{color:var(--cream)} p{margin:.7rem 0}
+  .upd{color:var(--muted); font-style:italic; font-family:var(--serif)}
+  ul{padding-left:1.1rem; margin:.6rem 0} li{margin:.5rem 0}
+  strong{font-weight:600}
+  em{font-style:italic}
+  code{background:var(--raise); padding:2px 7px; border-radius:5px; font-size:.92em}
+  hr{border:none; border-top:1px solid var(--line); margin:3.4rem 0}
+  ::selection{background:var(--terra); color:var(--bg)}
 </style>
 </head>
 <body>
-<h1>Frigopolis — Privacy Policy</h1>
-<p><em>Last updated: 2026-06-10</em></p>
+<div class="wrap">
+
+<div class="top"><span class="star">✶</span> <a href="/">Nyvola</a> <span style="color:var(--muted)">/ Frigopolis</span></div>
+
+<h1>Frigopolis · Privacy Policy</h1>
+<p class="upd">Last updated: 2026-06-10</p>
 
 <p>Frigopolis is a <strong>self-hosted</strong> family pantry-inventory app published by
 Nyvola Studio. The app works fully offline; connecting to a household server is optional
@@ -39,7 +66,7 @@ no central Frigopolis server and has no access to your inventory, account or pho
 
 <hr>
 
-<h1>Frigopolis — Politique de confidentialité (FR)</h1>
+<h1>Frigopolis · Politique de confidentialité (FR)</h1>
 <p>Frigopolis est une application d'inventaire familial <strong>auto-hébergée</strong>,
 éditée par Nyvola Studio. Elle fonctionne hors ligne ; la connexion à un serveur est
 optionnelle et ce serveur est <strong>hébergé par vous</strong>. Nyvola Studio n'exploite
@@ -47,9 +74,11 @@ aucun serveur central et n'a accès à aucune de vos données.</p>
 <ul>
   <li><strong>Publicité (version gratuite)</strong> : bannières via <strong>Google AdMob</strong> (identifiant publicitaire ; formulaire de consentement RGPD au 1er lancement).</li>
   <li><strong>Diagnostics de plantage</strong> : <strong>Firebase Crashlytics</strong> (rapports de crash anonymes).</li>
-  <li><strong>Vos données</strong> (articles, photos, et — seulement si vous connectez un serveur — email et nom) : stockées sur votre appareil et, si vous le choisissez, sur <strong>votre propre serveur</strong>. Nyvola Studio ne les reçoit jamais.</li>
+  <li><strong>Vos données</strong> (articles, photos, et votre email et nom uniquement si vous connectez un serveur) : stockées sur votre appareil et, si vous le choisissez, sur <strong>votre propre serveur</strong>. Nyvola Studio ne les reçoit jamais.</li>
 </ul>
 <p><strong>Suppression :</strong> dans l'app via <em>Mon compte → Supprimer mon compte</em>, ou par email à
 <a href="mailto:nyvolastudio@gmail.com">nyvolastudio@gmail.com</a>.</p>
+
+</div>
 </body>
 </html>
