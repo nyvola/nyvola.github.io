@@ -40,7 +40,7 @@
 <div class="top"><span class="star">✶</span> <a href="/">Nyvola</a> <span style="color:var(--muted)">/ Frigopolis</span></div>
 
 <h1>Frigopolis · Privacy Policy</h1>
-<p class="upd">Last updated: 2026-06-11</p>
+<p class="upd">Last updated: 2026-06-13</p>
 
 <p>Frigopolis is a <strong>self-hosted</strong> family pantry-inventory app published by
 Nyvola Studio. The app works fully offline; connecting to a household server is optional
@@ -51,6 +51,7 @@ no central Frigopolis server and has no access to your inventory, account or pho
 <ul>
   <li><strong>Advertising (free version)</strong>: the app shows banner ads via <strong>Google AdMob</strong>, which collects a device advertising identifier to serve ads. In the EEA/UK a consent form (Google UMP) is shown on first launch.</li>
   <li><strong>Crash diagnostics</strong>: <strong>Firebase Crashlytics</strong> collects anonymous crash reports (stack traces, device model, OS) to help fix bugs.</li>
+  <li><strong>Notifications</strong>: <strong>Firebase Cloud Messaging</strong> (Google) delivers app announcements and, if you connect a server, optional messages that server sends to your devices; it processes a device notification token only (never your inventory or credentials). <strong>Expiry reminders are computed and shown locally on your device</strong> and send nothing. Optional — you can turn notifications off in the Android settings.</li>
   <li><strong>Your content</strong> (pantry items, photos, and, only if you connect a server, your email and display name): stored locally on your device and, if you opt in, on <strong>your own self-hosted server</strong>. Nyvola Studio never receives it.</li>
   <li><strong>Anonymous usage analytics</strong>: <strong>Firebase Analytics</strong> collects aggregate, anonymous usage (screens viewed, sessions, active users) to help us understand how the app is used. It carries <strong>no inventory content and no identity</strong>, and follows the same consent as ads (off if you decline).</li>
   <li><strong>Shared product catalogue</strong>: when you name a scanned product the public databases do not know, the <strong>barcode and the product name/brand</strong> are added to a shared, anonymous catalogue so other users can recognise it later. <strong>No identity and no inventory</strong> are sent (no location, quantity or expiry).</li>
@@ -76,6 +77,7 @@ aucun serveur central et n'a accès à aucune de vos données.</p>
 <ul>
   <li><strong>Publicité (version gratuite)</strong> : bannières via <strong>Google AdMob</strong> (identifiant publicitaire ; formulaire de consentement RGPD au 1er lancement).</li>
   <li><strong>Diagnostics de plantage</strong> : <strong>Firebase Crashlytics</strong> (rapports de crash anonymes).</li>
+  <li><strong>Notifications</strong> : <strong>Firebase Cloud Messaging</strong> (Google) délivre les annonces de l'app et, si vous connectez un serveur, les messages optionnels qu'il envoie à vos appareils ; seul un jeton de notification d'appareil est traité (jamais votre inventaire ni vos identifiants). Les <strong>rappels de péremption sont calculés et affichés localement</strong> sur l'appareil et n'envoient rien. Optionnel — désactivable dans les réglages Android.</li>
   <li><strong>Vos données</strong> (articles, photos, et votre email et nom uniquement si vous connectez un serveur) : stockées sur votre appareil et, si vous le choisissez, sur <strong>votre propre serveur</strong>. Nyvola Studio ne les reçoit jamais.</li>
   <li><strong>Statistiques d'usage anonymes</strong> : <strong>Firebase Analytics</strong> collecte un usage agrégé et anonyme (écrans vus, sessions, utilisateurs actifs) pour comprendre comment l'app est utilisée. <strong>Aucun contenu d'inventaire, aucune identité</strong>, et même consentement que les publicités (désactivé si vous refusez).</li>
   <li><strong>Catalogue produit partagé</strong> : quand vous nommez un produit scanné que les bases publiques ne connaissent pas, le <strong>code-barres et le nom/marque</strong> du produit sont ajoutés à un catalogue partagé et anonyme, pour que d'autres utilisateurs le reconnaissent ensuite. <strong>Aucune identité, aucun inventaire</strong> (ni lieu, ni quantité, ni péremption).</li>
