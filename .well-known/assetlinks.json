@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.frigopolis.app",
+      "sha256_cert_fingerprints": [
+        "2A:D7:96:47:72:80:CD:A7:70:71:A4:7A:5A:26:1F:9C:D0:3F:21:FC:BC:30:22:46:83:3B:73:F1:C7:B1:36:1E"
+      ]
+    }
+  }
+]
