@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rejoindre un foyer Frigopolis</title>
+  <style>
+    :root { --cream:#F7F1E4; --grass:#5C7A41; --terra:#C2683F; --ink:#2E2A22; --mut:#8A8475; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+           background:var(--cream); color:var(--ink); display:flex; min-height:100vh;
+           align-items:center; justify-content:center; padding:24px; }
+    .card { max-width:420px; width:100%; text-align:center; }
+    .fridge { width:84px; height:84px; border-radius:20px; background:var(--grass);
+              margin:0 auto 20px; display:flex; align-items:center; justify-content:center; }
+    .fridge span { width:42px; height:58px; background:var(--cream); border-radius:8px; position:relative; }
+    .fridge span::after { content:""; position:absolute; right:7px; top:14px; width:4px; height:18px;
+                          background:var(--terra); border-radius:2px; }
+    h1 { font-size:22px; margin:0 0 8px; }
+    p { color:var(--mut); line-height:1.5; margin:0 0 18px; font-size:15px; }
+    .code { font-family:ui-monospace,Menlo,Consolas,monospace; font-size:15px; background:#fff;
+            border:1px solid #e4ddcb; border-radius:12px; padding:12px; word-break:break-all; margin-bottom:18px; }
+    .btn { display:block; text-decoration:none; font-weight:600; padding:14px; border-radius:14px;
+           margin-bottom:10px; }
+    .btn-primary { background:var(--grass); color:#fff; }
+    .btn-outline { border:1px solid #d8d0bd; color:var(--ink); }
+    .hint { font-size:13px; color:var(--mut); }
+    .en { margin-top:18px; font-size:12px; color:var(--mut); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="fridge"><span></span></div>
+    <h1>Rejoindre un foyer Frigopolis</h1>
+    <p>Si Frigopolis est installé, ce lien ouvre l’app et te fait rejoindre le foyer automatiquement.
+       Sinon, installe l’app puis colle le code ci-dessous dans <b>Compte → Foyer partagé → Rejoindre</b>.</p>
+    <div class="code" id="code">—</div>
+    <a class="btn btn-primary" id="open" href="#">Ouvrir dans Frigopolis</a>
+    <a class="btn btn-outline" href="https://play.google.com/store/apps/details?id=com.frigopolis.app">Installer Frigopolis (Play Store)</a>
+    <p class="hint">Le code expire si l’hôte du foyer renouvelle le lien.</p>
+    <p class="en">Open this link on the device with Frigopolis installed, or paste the code in Account → Shared household → Join.</p>
+  </div>
+  <script>
+    var p = new URLSearchParams(location.search);
+    var h = p.get('h'), t = p.get('t');
+    if (h && t) {
+      document.getElementById('code').textContent = h + '.' + t;
+      document.getElementById('open').href = location.href; // App Link reopens the app if installed
+    } else {
+      document.getElementById('code').textContent = 'Lien invalide';
+    }
+  </script>
+</body>
+</html>
