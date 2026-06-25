@@ -40,29 +40,48 @@
 <div class="top"><span class="star">✶</span> <a href="/">Nyvola</a> <span style="color:var(--muted)">/ Frigopolis</span></div>
 
 <h1>Frigopolis · Privacy Policy</h1>
-<p class="upd">Last updated: 2026-06-13</p>
+<p class="upd">Last updated: 2026-06-25</p>
 
-<p>Frigopolis is a <strong>self-hosted</strong> family pantry-inventory app published by
-Nyvola Studio. The app works fully offline; connecting to a household server is optional
-and that server is <strong>hosted by you or your family</strong>. Nyvola Studio operates
-no central Frigopolis server and has no access to your inventory, account or photos.</p>
+<p>Frigopolis is a family pantry-inventory app published by Nyvola Studio. It works
+fully offline, and any syncing is optional. You can choose to sync your data in one
+of two ways: with a <strong>household server that you or your family host
+yourselves</strong> (typically a home NAS), or with the <strong>Frigopolis cloud</strong>
+by signing in with a Google account, which also lets several people <strong>share one
+household inventory</strong>. Both are off by default and you opt in explicitly.</p>
 
 <h2>Data we handle</h2>
 <ul>
+  <li><strong>Your content</strong> (pantry items, photos, and your account email and
+  display name): always stored locally on your device. If you connect a
+  <strong>self-hosted server</strong>, it is also stored on that server (your password
+  is kept <strong>hashed</strong>, never in plain text). If you use the
+  <strong>Frigopolis cloud</strong>, see the next item.</li>
+  <li><strong>Frigopolis cloud (optional, Google sign-in)</strong>: if you sign in with
+  Google, your inventory items and your household membership sync through
+  <strong>Google Firebase (Cloud Firestore)</strong>. The members of a household share
+  one inventory and can see each other's <strong>email and display name</strong>. Access
+  is restricted by security rules to your own household; we do not sell your data or use
+  it for advertising. <strong>Photos are never uploaded to the cloud</strong> — only the
+  item fields (name, quantity, location, category, expiry date, barcode, etc.). You join
+  a household via a link or code, and the owner can revoke invites or remove members at
+  any time.</li>
   <li><strong>Advertising (free version)</strong>: the app shows banner ads via <strong>Google AdMob</strong>, which collects a device advertising identifier to serve ads. In the EEA/UK a consent form (Google UMP) is shown on first launch.</li>
   <li><strong>Crash diagnostics</strong>: <strong>Firebase Crashlytics</strong> collects anonymous crash reports (stack traces, device model, OS) to help fix bugs.</li>
-  <li><strong>Notifications</strong>: <strong>Firebase Cloud Messaging</strong> (Google) delivers app announcements and, if you connect a server, optional messages that server sends to your devices; it processes a device notification token only (never your inventory or credentials). <strong>Expiry reminders are computed and shown locally on your device</strong> and send nothing. Optional — you can turn notifications off in the Android settings.</li>
-  <li><strong>Your content</strong> (pantry items, photos, and, only if you connect a server, your email and display name): stored locally on your device and, if you opt in, on <strong>your own self-hosted server</strong>. Nyvola Studio never receives it.</li>
   <li><strong>Anonymous usage analytics</strong>: <strong>Firebase Analytics</strong> collects aggregate, anonymous usage (screens viewed, sessions, active users) to help us understand how the app is used. It carries <strong>no inventory content and no identity</strong>, and follows the same consent as ads (off if you decline).</li>
+  <li><strong>Notifications</strong>: <strong>Firebase Cloud Messaging</strong> (Google) delivers app announcements and, if you connect a server, optional messages that server sends to your devices; it processes a device notification token only (never your inventory or credentials). <strong>Expiry reminders are computed and shown locally on your device</strong> and send nothing. Optional — you can turn notifications off in the Android settings.</li>
   <li><strong>Shared product catalogue</strong>: when you name a scanned product the public databases do not know, the <strong>barcode and the product name/brand</strong> are added to a shared, anonymous catalogue so other users can recognise it later. <strong>No identity and no inventory</strong> are sent (no location, quantity or expiry).</li>
 </ul>
-<p>Beyond the above there is no other marketing tracking. Scanned barcodes are sent over HTTPS to Open Food Facts / UPCitemdb and the shared catalogue, only to fetch or contribute product information. <strong>Your inventory always stays on your device and, if you use one, your own server.</strong></p>
+<p>Beyond the above there is no other marketing tracking. Scanned barcodes are sent over HTTPS to Open Food Facts / UPCitemdb and the shared catalogue, only to fetch or contribute product information. <strong>Your photos always stay on your device and, if you use one, your own server — never the Frigopolis cloud.</strong></p>
 
 <h2 id="data-deletion">Deleting your account and data</h2>
 <ul>
-  <li><strong>In the app</strong>: <em>My account → Delete my account</em> permanently deletes your account and personal data from the household server.</li>
-  <li><strong>Without the app, or any request</strong>: email <a href="mailto:nyvolastudio@gmail.com">nyvolastudio@gmail.com</a>. As the server is self-hosted, the household administrator can also delete any account and wipe all data.</li>
+  <li><strong>Self-hosted server</strong>: in the app via <em>My account → Delete my account</em>, which permanently deletes your account and personal data from the household server.</li>
+  <li><strong>Frigopolis cloud</strong>: in the app you can <strong>leave a household</strong>, or, if you are the owner, <strong>disband</strong> it, which removes the shared inventory and member list from the cloud. Leaving also removes your profile (email/display name) from that household.</li>
+  <li><strong>Without the app, or any request</strong>: email <a href="mailto:nyvolastudio@gmail.com">nyvolastudio@gmail.com</a> and we will delete the associated data.</li>
 </ul>
+
+<h2>Children</h2>
+<p>Frigopolis is a household utility and is not directed at children.</p>
 
 <h2>Contact</h2>
 <p><a href="mailto:nyvolastudio@gmail.com">nyvolastudio@gmail.com</a></p>
@@ -70,20 +89,25 @@ no central Frigopolis server and has no access to your inventory, account or pho
 <hr>
 
 <h1>Frigopolis · Politique de confidentialité (FR)</h1>
-<p>Frigopolis est une application d'inventaire familial <strong>auto-hébergée</strong>,
-éditée par Nyvola Studio. Elle fonctionne hors ligne ; la connexion à un serveur est
-optionnelle et ce serveur est <strong>hébergé par vous</strong>. Nyvola Studio n'exploite
-aucun serveur central et n'a accès à aucune de vos données.</p>
+<p class="upd">Dernière mise à jour : 25/06/2026</p>
+<p>Frigopolis est une application d'inventaire familial éditée par Nyvola Studio. Elle
+fonctionne hors ligne et toute synchronisation est optionnelle. Vous pouvez choisir de
+synchroniser vos données de deux façons : avec un <strong>serveur que vous hébergez
+vous-même</strong> (typiquement un NAS), ou avec le <strong>cloud Frigopolis</strong> en
+vous connectant avec un compte Google, ce qui permet aussi à plusieurs personnes de
+<strong>partager un même inventaire de foyer</strong>. Les deux sont désactivés par
+défaut et activés explicitement par vous.</p>
 <ul>
+  <li><strong>Vos données</strong> (articles, photos, email et nom affiché du compte) : toujours stockées sur votre appareil. Si vous connectez un <strong>serveur auto-hébergé</strong>, elles y sont aussi stockées (mot de passe <strong>haché</strong>). Si vous utilisez le <strong>cloud Frigopolis</strong>, voir le point suivant.</li>
+  <li><strong>Cloud Frigopolis (optionnel, connexion Google)</strong> : en cas de connexion Google, vos articles et l'appartenance à votre foyer sont synchronisés via <strong>Google Firebase (Cloud Firestore)</strong>. Les membres d'un foyer partagent un même inventaire et voient l'<strong>email et le nom affiché</strong> des autres membres. L'accès est restreint par des règles de sécurité à votre seul foyer ; vos données ne sont ni vendues ni utilisées pour la publicité. <strong>Les photos ne sont jamais envoyées au cloud</strong> (seuls les champs des articles le sont). L'adhésion se fait par lien ou code, et le propriétaire peut révoquer les invitations ou retirer un membre à tout moment.</li>
   <li><strong>Publicité (version gratuite)</strong> : bannières via <strong>Google AdMob</strong> (identifiant publicitaire ; formulaire de consentement RGPD au 1er lancement).</li>
   <li><strong>Diagnostics de plantage</strong> : <strong>Firebase Crashlytics</strong> (rapports de crash anonymes).</li>
+  <li><strong>Statistiques d'usage anonymes</strong> : <strong>Firebase Analytics</strong> collecte un usage agrégé et anonyme (écrans vus, sessions, utilisateurs actifs). <strong>Aucun contenu d'inventaire, aucune identité</strong>, et même consentement que les publicités (désactivé si vous refusez).</li>
   <li><strong>Notifications</strong> : <strong>Firebase Cloud Messaging</strong> (Google) délivre les annonces de l'app et, si vous connectez un serveur, les messages optionnels qu'il envoie à vos appareils ; seul un jeton de notification d'appareil est traité (jamais votre inventaire ni vos identifiants). Les <strong>rappels de péremption sont calculés et affichés localement</strong> sur l'appareil et n'envoient rien. Optionnel — désactivable dans les réglages Android.</li>
-  <li><strong>Vos données</strong> (articles, photos, et votre email et nom uniquement si vous connectez un serveur) : stockées sur votre appareil et, si vous le choisissez, sur <strong>votre propre serveur</strong>. Nyvola Studio ne les reçoit jamais.</li>
-  <li><strong>Statistiques d'usage anonymes</strong> : <strong>Firebase Analytics</strong> collecte un usage agrégé et anonyme (écrans vus, sessions, utilisateurs actifs) pour comprendre comment l'app est utilisée. <strong>Aucun contenu d'inventaire, aucune identité</strong>, et même consentement que les publicités (désactivé si vous refusez).</li>
   <li><strong>Catalogue produit partagé</strong> : quand vous nommez un produit scanné que les bases publiques ne connaissent pas, le <strong>code-barres et le nom/marque</strong> du produit sont ajoutés à un catalogue partagé et anonyme, pour que d'autres utilisateurs le reconnaissent ensuite. <strong>Aucune identité, aucun inventaire</strong> (ni lieu, ni quantité, ni péremption).</li>
 </ul>
-<p>En dehors de ce qui précède, aucun autre traçage marketing. Les codes-barres scannés sont envoyés en HTTPS à Open Food Facts / UPCitemdb et au catalogue partagé, uniquement pour récupérer ou contribuer des informations produit. <strong>Votre inventaire reste toujours sur votre appareil et, le cas échéant, votre propre serveur.</strong></p>
-<p><strong>Suppression :</strong> dans l'app via <em>Mon compte → Supprimer mon compte</em>, ou par email à
+<p>En dehors de ce qui précède, aucun autre traçage marketing. Les codes-barres scannés sont envoyés en HTTPS à Open Food Facts / UPCitemdb et au catalogue partagé, uniquement pour récupérer ou contribuer des informations produit. <strong>Vos photos restent toujours sur votre appareil et, le cas échéant, votre propre serveur — jamais le cloud Frigopolis.</strong></p>
+<p><strong>Suppression :</strong> compte serveur via <em>Mon compte → Supprimer mon compte</em> ; côté cloud, vous pouvez <strong>quitter un foyer</strong> ou, en tant que propriétaire, le <strong>dissoudre</strong> (retrait du cloud de l'inventaire partagé et de la liste des membres). Pour toute demande, ou sans l'app, écrivez à
 <a href="mailto:nyvolastudio@gmail.com">nyvolastudio@gmail.com</a>.</p>
 
 </div>
